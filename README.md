@@ -25,38 +25,83 @@ It includes: &#x20;
 
 ---
 
-## 📦 Installation &#x20;
+## 📦 Installation
 
+### 📘 Recommended VSCode Extensions
 
-### It is highly recommended to use vscode to install the extensions here&#x20;
-- rust-analyzer (officially recommended LSP support, replaces old RLS)
-- CodeLLDB (debugging support)
-- even Better TOML (editing Cargo.toml files)
-- Cargo (easier to run Cargo commands)
-### You can also use visual studio and install the following prerequisites(not recommended)&#x20;
-- [Rust  ](https://www.rust-lang.org/tools/install)
-- [wasm-pack  ](https://rustwasm.github.io/wasm-pack/installer/)
-- Node.js + npm (or yarn) &#x20;
-### Clone and Setup &#x20;
+It is highly recommended to use VSCode with the following extensions:
 
+- **rust-analyzer** (official LSP support)
+- **CodeLLDB** (debugging support)
+- **Even Better TOML** (Cargo.toml editing)
+- **Cargo** (easy to run cargo commands)
+
+### ❗ Prerequisites (for non-VSCode users)
+
+If you are not using VSCode, you’ll need to install the following tools:
+
+- [Rust](https://www.rust-lang.org/tools/install)
+- [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)
+- Node.js + npm (or yarn)
+
+---
+
+### 🛠 Rust + wasm-pack Setup (Windows)
+
+To build the WebAssembly module, Rust and `wasm-pack` are required.
+
+#### Install Rust
+
+Visit the official Rust installation page and download the Windows installer:
+
+👉 [https://www.rust-lang.org/tools/install](https://www.rust-lang.org/tools/install)
+
+Run `rustup-init.exe` and follow the default installation (recommended). This will install:
+
+- `cargo` – Rust’s package manager  
+- `rustc` – The Rust compiler  
+
+#### Restart and Verify
+
+After installation, **restart your terminal or VSCode**, then run:
+
+```bash
+cargo --version
+rustc --version
+```
+You should see something like:
+```bash
+cargo 1.77.0 (stable)
+rustc 1.77.0 (stable)
+```
+#### Install wasm-pack
+Now install wasm-pack with:
+```bash
+cargo install wasm-pack
+```
+Check if it works:
+```bash
+wasm-pack --version
+```
+####  Clone and Setup
 ```bash
 # Clone this repository
 https://github.com/UOA-CS732-S1-2025/cs732-assignment-SylvanWu.git
-cd demo/www
+# or
+https://github.com/SylvanWu/WASMvsJS.git
+cd www
 
 # Install frontend dependencies
 npm install
 ```
 
-### Build WASM Package &#x20;
-
-
+### Build WASM Package;
 
 ```bash
 # From the root folder containing src/lib.rs (calculator)
-wasm-pack build --release --target web --out-dir ../www/src/
+wasm-pack build --release --target web --out-dir ../www/src/pkg
 ```
-Make sure the pkg is in demo/www/src. 
+Make sure the pkg is in demo/www/src
 Or you can use
 ```bash
 wasm-pack build --release --target web
