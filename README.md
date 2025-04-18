@@ -27,18 +27,22 @@ It includes: &#x20;
 
 ## 📦 Installation &#x20;
 
-### Prerequisites &#x20;
 
+### It is highly recommended to use vscode to install the extensions here&#x20;
+- rust-analyzer (officially recommended LSP support, replaces old RLS)
+- CodeLLDB (debugging support)
+- even Better TOML (editing Cargo.toml files)
+- Cargo (easier to run Cargo commands)
+### You can also use visual studio and install the following prerequisites(not recommended)&#x20;
 - [Rust  ](https://www.rust-lang.org/tools/install)
 - [wasm-pack  ](https://rustwasm.github.io/wasm-pack/installer/)
 - Node.js + npm (or yarn) &#x20;
-
 ### Clone and Setup &#x20;
 
 ```bash
 # Clone this repository
-https://github.com/your-username/wasm-calculator-demo.git
-cd wasm-calculator-demo/www
+https://github.com/UOA-CS732-S1-2025/cs732-assignment-SylvanWu.git
+cd demo/www
 
 # Install frontend dependencies
 npm install
@@ -46,11 +50,25 @@ npm install
 
 ### Build WASM Package &#x20;
 
+
+
 ```bash
-# From the root folder containing src/lib.rs
+# From the root folder containing src/lib.rs (calculator)
+wasm-pack build --release --target web --out-dir ../www/src/
+```
+Make sure the pkg is in demo/www/src. 
+Or you can use
+```bash
 wasm-pack build --release --target web
 ```
-
+And copy the pkg from 
+```bash
+demo/calculator/
+```
+to
+```bash
+demo/www/src
+```
 This will generate a `/pkg` folder containing the WebAssembly module. &#x20;
 
 ---
@@ -84,26 +102,18 @@ The app includes automated benchmarking of several scenarios: &#x20;
 | `heavy`    | Sum of factorials from 1 to 5000        |
 | `fib`      | Recursive computation of Fibonacci(35)  |
 
-\*\*WASM performs significantly faster in recursive and numerical-heavy tasks.  \*\*
+WASM performs significantly faster in recursive and numerical-heavy tasks. 
 
 ---
 
 ## 📁 Project Structure &#x20;
 
 ```
-├── src/lib.rs              # Rust calculator core
+├── calculator/src/lib.rs   # Rust calculator core
 ├── www/src/App.jsx         # React frontend with mode toggle and UI
 ├── www/src/CalculatorJS.js # JS version of calculator logic
 ├── www/package.json        # React project setup
-├── pkg/                    # WASM build output
-```
-
----
-
-## 🛠️ Build for Production &#x20;
-
-```bash
-npm run build
+├── www/src/pkg/            # WASM build output
 ```
 
 ---
@@ -112,7 +122,7 @@ npm run build
 
 - Rust + wasm-bindgen for WASM logic &#x20;
 - React + Vite for frontend &#x20;
-- Tailwind CSS for quick UI styling &#x20;
+- CSS for quick UI styling &#x20;
 
 ---
 
