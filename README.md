@@ -115,7 +115,29 @@ to
 demo/www/src
 ```
 This will generate a `/pkg` folder containing the WebAssembly module. &#x20;
-
+Ensure that the architecture is as follows
+```
+demo/
+├── calculator/                  # WASM core module (Rust)
+│   ├── src/
+│   │   ├── lib.rs              # Main Rust logic
+│   │   └── utils.rs            # Utility functions
+│   ├── pkg/                    # wasm-pack output (WASM bindings)
+│   ├── target/                 # Rust build cache
+│   ├── Cargo.toml              # Rust project config
+│   └── ... (other Rust files)
+│
+└── www/                        # Frontend (JS/React)
+    ├── public/                 # Static assets
+    ├── src/
+    │   ├── assets/             # Frontend assets (images/styles)
+    │   ├── pkg/                # WASM package (linked from calculator/pkg)
+    │   ├── App.jsx             # Root React component
+    │   └── ... (frontend code)
+    ├── vite.config.js          # Vite configuration
+    └── package.json            # Frontend dependencies
+    
+```
 ---
 
 ## 🖥️ Usage &#x20;
